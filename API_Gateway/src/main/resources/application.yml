@@ -6,9 +6,11 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
+      routes:
+        - id: modulo-admin          
+          uri: lb://servicio-administrador  
+          predicates:
+            - Path=/api/administradores/**
 
 eureka:
   client:
