@@ -12,6 +12,11 @@ spring:
           predicates:
             - Path=/api/administradores/**
 
+        - id: modulo-proveedores
+          uri: lb://PROVEEDORES
+          predicates:
+            - Path=/api/proveedores/**
+
 eureka:
   client:
     service-url:
