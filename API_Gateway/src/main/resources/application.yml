@@ -27,10 +27,6 @@ spring:
           predicates:
             - Path=/api/productos/**
 
-        - id: modulo-administrador
-          uri: lb://administrador
-          predicates:
-            - Path=/api/administrador/**
 
 eureka:
   client:
