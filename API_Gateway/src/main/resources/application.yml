@@ -10,23 +10,32 @@ spring:
         - id: modulo-admin          
           uri: lb://servicio-administrador  
           predicates:
-            - Path=/api/administradores/**
+            - Path=/api/v1/administradores/** 
 
         - id: modulo-proveedores
           uri: lb://servicio-proveedores
           predicates:
-            - Path=/api/proveedores/**
-
+            - Path=/api/v1/proveedores/**
+            
         - id: modulo-clientes
-          uri: lb://servicio-clientes
+          uri: lb://clientes 
           predicates:
-            - Path=/api/clientes/**
+            - Path=/api/v1/clientes/** 
 
         - id: modulo-productos
           uri: lb://productos
           predicates:
-            - Path=/api/productos/**
+            - Path=/api/v1/productos/**
 
+        - id: modulo-ventas
+          uri: lb://ventas
+          predicates:
+            - Path=/api/v1/ventas/**
+
+        - id: modulo-comprobantes
+          uri: lb://registro 
+          predicates:
+            - Path=/api/v1/comprobantes/**
 
 eureka:
   client:
