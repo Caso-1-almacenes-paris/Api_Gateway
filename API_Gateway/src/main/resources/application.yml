@@ -6,21 +6,24 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
-        - id: modulo-admin          
-          uri: lb://servicio-administrador  
+        - id: modulo-admin
+          uri: lb://servicio-administrador
           predicates:
-            - Path=/api/v1/administradores/** 
+            - Path=/api/v1/administradores/**
 
         - id: modulo-proveedores
-          uri: lb://servicio-proveedores
+          uri: lb://proveedores
           predicates:
-            - Path=/api/v1/proveedores/**
-            
+            - Path=/api/proveedores/**
+
         - id: modulo-clientes
-          uri: lb://clientes 
+          uri: lb://clientes
           predicates:
-            - Path=/api/v1/clientes/** 
+            - Path=/api/v1/clientes/**
 
         - id: modulo-productos
           uri: lb://productos
@@ -33,11 +36,29 @@ spring:
             - Path=/api/v1/ventas/**
 
         - id: modulo-comprobantes
-          uri: lb://registro 
+          uri: lb://registro
           predicates:
             - Path=/api/v1/comprobantes/**
+
+        - id: modulo-estado
+          uri: lb://estado
+          predicates:
+            - Path=/api/v1/envios/**
+
+        - id: modulo-notificaciones
+          uri: lb://notificaciones
+          predicates:
+            - Path=/api/v1/notificaciones/**
+
+
+        - id: modulo-tickets
+          uri: lb://tickets-service 
+          predicates:
+            - Path=/api/v1/tickets/**
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
